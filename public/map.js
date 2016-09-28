@@ -28,7 +28,7 @@ Map.prototype.addMarker = function(coords, title) {
 
 function Map (container) {
   this.googleMap = new google.maps.Map(container, {
-    center: new google.maps.LatLng(-34.397, 150.644),
+    center: new google.maps.LatLng(0, 150.644),
     zoom: 1,
     minZoom: 1
   });
