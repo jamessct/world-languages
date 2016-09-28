@@ -1,9 +1,8 @@
-function Pin (map, coords, title, label) {
+function Pin (map, coords, title) {
   this.marker = new google.maps.Marker({
     position: coords,
     map: map,
-    title: title,
-    label: label
+    title: title
   });
   this.infowindow = new google.maps.InfoWindow({
     content: "<h2>This is " + title + "</h2>"
@@ -24,25 +23,14 @@ Map.prototype.addMarker = function(coords, title) {
   // marker.addListener('click', function() {
   //   this.infowindow.open(this.googleMap, marker);
   // }.bind(this));
-  var label = String.fromCharCode('A'.charCodeAt() + (this.labelCounter++ % 26));
-  var marker = new Pin(this.googleMap, coords, title, label);
+  var marker = new Pin(this.googleMap, coords, title);
 }
 
-Map.prototype.geocodeAddress = function(geocoder, address) {
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === 'OK') {
-      this.googleMap.setCenter(results[0].geometry.location);
-      this.addMarker(results[0].geometry.location, address);
-    } else {
-      alert('Geocode failed: ' + status);
-    }
-  }.bind(this));
-}
-
-function Map (container, coords, zoom) {
+function Map (container) {
   this.googleMap = new google.maps.Map(container, {
-    center: coords,
-    zoom: zoom
+    center: new google.maps.LatLng(-34.397, 150.644),
+    zoom: 1,
+    minZoom: 1
   });
   this.labelCounter = 0;
   // this.infowindow = new google.maps.InfoWindow();
