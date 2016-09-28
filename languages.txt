@@ -1,0 +1,32 @@
+zh Mandarin Chinese
+en English
+es Spanish
+hi Hindi
+ru Russian
+ar Arabic
+pt Portuguese
+bn Bengali
+fr French
+ms Malay, Indonesian
+de German
+ja Japanese
+fa Farsi (Persian)
+ur Urdu
+pa Punjabi
+// Wu
+vi Vietnamese
+jv Javanese
+ta Tamil
+ko Korean
+tr Turkish
+te Telugu
+mr Marathi
+it Italian
+th Thai
+my Burmese
+// Cantonese
+kn Kannada
+gu Gujarati
+pl Polish
+or Oriya
+ml Malayalam
