@@ -3,6 +3,34 @@ var allCountries;
 var selectedCountries;
 var map;
 
+var sortList = function() {
+  var dropdownList = document.querySelector('select');
+  var countriesString = new Array();
+
+  for(i = 1; i < dropdownList.length; i++) {
+    countriesString[i-1] =
+      dropdownList.options[i].text + "," +
+      dropdownList.options[i].value + "," +
+      dropdownList.options[i].selected;
+  }
+
+  countriesString.sort();
+
+  for(i = 1; i < dropdownList.length; i++) {
+    var parts = countriesString[i-1].split(',');
+
+    dropdownList.options[i].text = parts[0];
+    dropdownList.options[i].value = parts[1];
+
+    if(parts[2] == "true") {
+      dropdownList.options[i].selected = true;
+    }
+    else {
+      dropdownList.options[i].selected = false;
+    }
+  }
+}
+
 var initMap = function() {
   var container = document.getElementById('map');
   map = new Map(container);
@@ -38,6 +66,8 @@ var getCountriesByLanguage = function() {
 var initialise = function() {
   var url = "http://localhost:5000";
   makeRequest(url, getAllCountries);
+
+  sortList();
 
   var languages = document.querySelector('select');
   languages.onchange = getCountriesByLanguage;
