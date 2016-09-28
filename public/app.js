@@ -42,6 +42,7 @@ var initialise = function() {
         map.addMarker(new google.maps.LatLng(country.latlng[0], country.latlng[1]), country.name);
     })
   }
+
 }
 
 window.onload = initialise;
