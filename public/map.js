@@ -26,8 +26,8 @@ Map.prototype.zoom = function() {
   this.googleMap.setCenter(bounds.getCenter());
   this.googleMap.addListener('bounds_changed', function() {
     // 'this' is the googleMap
-    if (this.getZoom() > 7) {
-      this.setZoom(7);
+    if (this.getZoom() > 5) {
+      this.setZoom(5);
     }
   })
   this.googleMap.fitBounds(bounds);
