@@ -39,8 +39,9 @@ var initialise = function() {
     if (selectedCountries === null) return;
     map = initMap();
     selectedCountries.forEach(function(country) {
-        map.addMarker(new google.maps.LatLng(country.latlng[0], country.latlng[1]), country.name);
+        map.addPin(new google.maps.LatLng(country.latlng[0], country.latlng[1]), country.name);
     })
+    map.zoom();
   }
 
 }

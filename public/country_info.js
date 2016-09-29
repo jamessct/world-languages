@@ -13,7 +13,7 @@ function CountryInfo() {
   }
 
   this.filter = function(filterLanguage) {
-    console.log(this.languageList());
+    // console.log(this.languageList());
     if (this._countries === null) return null;
     return this._countries.filter(function(country) {
       for(var language of country.languages) {

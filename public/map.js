@@ -12,8 +12,25 @@ function Pin (map, coords, title) {
   }.bind(this));
 }
 
-Map.prototype.addMarker = function(coords, title) {
-  var marker = new Pin(this.googleMap, coords, title);
+Map.prototype.addPin = function(coords, title) {
+  this.pins.push(new Pin(this.googleMap, coords, title));
+}
+
+Map.prototype.zoom = function() {
+  var n = this.pins.length;
+  if (n === 0) return;
+  var bounds = new google.maps.LatLngBounds();
+  for (var i = 0; i < n; i++) {
+    bounds.extend(this.pins[i].marker.getPosition());
+  }
+  this.googleMap.setCenter(bounds.getCenter());
+  this.googleMap.addListener('bounds_changed', function() {
+    // 'this' is the googleMap
+    if (this.getZoom() > 7) {
+      this.setZoom(7);
+    }
+  })
+  this.googleMap.fitBounds(bounds);
 }
 
 function Map (container) {
@@ -22,4 +39,5 @@ function Map (container) {
     zoom: 1,
     minZoom: 1
   });
+  this.pins = [];
 }
